@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset = "utf-8">
+		<title>Cadastro</title>
+	</head>
+	<body>
+        <header>
+		    <h1>Cadastro</h1>
+        </header>
+        <aside>
+            <form action="cadastro.html" method="POST">
+                <label for="data"> Data de nascimento:</label>
+                <input type="date" id="data" name="data" value = "" required = "required"> 
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" value = "" required = "required"> 
+                <label for="telefone">Número:</label>
+                <input type="text" id="telefone" name="telefone" value = "" required = "required"> 
+                <label for="mes">Mês de adesão:</label>
+                <input type="month" id="mes" name="mes" value = "" required = "required"> <br>
+                <label for="quantity"> Pretenção de fimes assistidos por mês (1 à 7):</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="7">
+                <label for="cor">Cor de preferência para área do cliente</label> 
+                <select name="cor" id ="cor" required = "required"> 
+                    <option value="black">
+                        Preto
+                    </option>
+                    <option value="white">
+                        Branco
+                    </option>
+                </select> 
+                <label for="link_site">Endereço da página pessoal (se tiver):</label>
+                <textarea id ="link_site" rows="5" cols="30"></textarea>
+                <label for="hora">Data e hora para o uso do cupom:</label>
+                <input type="datetime-local" id="hora"
+                name="horacupom" value=""
+                min="2023-04-01T00:00" max="2023-04-30T23:59">
+                <p>Preferência categorias:</p>
+                <label for="acao">Ação:</label>
+                <input type="range" id="acao" name="acao" min="0" max="10" value ="0">
+                <label for="drama">Drama:</label>
+                <input type="range" id="drama" name="drama" min="0" max="10" value ="0">
+                <label for="romance">Romance:</label>
+                <input type="range" id="romance" name="romance" min="0" max="10" value ="0">
+                <label for="comedia">Comédia:</label>
+                <input type="range" id="comedia" name="comedia" min="0" max="10" value ="0">
+                <label for="suspense">Suspense:</label>
+                <input type="range" id="suspense" name="suspense" min="0" max="10" value ="0">
+                <label for="terror">Terror:</label>
+                <input type="range" id="terror" name="terror" min="0" max="10" value ="0">
+                <label for="fc">Ficção científica:</label>
+                <input type="range" id="fc" name="fc" min="0" max="10" value ="0">
+                <input type="submit" value="Enviar">
+                <input type="reset">
+            </aside>
+		</form>
+	</body>
+</html>	
