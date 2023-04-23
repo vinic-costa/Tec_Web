@@ -1,0 +1,73 @@
+/* Section - Cadastro para filmes - Início */
+
+body{
+    background-color: #202020;
+    color: white;
+}
+
+section#cadastro-filmes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding: 40px 0;
+    border: 2px solid white;
+}
+
+main #cadastro-filmes h2 {
+    margin-bottom: 40px;
+}
+
+main #cadastro-filmes form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    padding: 20px 40px;
+    border: 1px solid white;
+}
+
+main #cadastro-filmes form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+main #cadastro-filmes form div:last-child {
+    margin-bottom: 0;
+}
+
+main #cadastro-filmes form select,
+main #cadastro-filmes form input[type="text"],
+main #cadastro-filmes form input[type="tel"],
+main #cadastro-filmes form input[type="email"],
+main #cadastro-filmes form input[type="date"] {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
+}
+
+main #cadastro-filmes form #botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+main #cadastro-filmes #botoes #botao:first-child{
+    margin-right: 20px;
+
+}
+
+main #cadastro-filmes form button {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 10px;
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgba(155, 152, 146, 0.563);
+}
+
+/* Section - Cadastro para filmes - Fim */
