@@ -1,0 +1,88 @@
+main figure.figura img{
+    width: 100%;
+}
+
+main figure.figura{
+    width: 200px;
+    height: 100px;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+main section{
+    width: 50%;
+}
+
+main section h2{
+    display: flex;
+    justify-content: center;
+}
+
+main section p{
+    text-align: justify;
+}
+
+main nav{
+    width: 25%;
+}
+
+main figure{
+    width: 25%;
+}
+
+main ul a {
+    color: black;
+    text-decoration: none;
+    list-style-type: none;
+  }
+
+  main ul li {
+    border: 1px solid;
+    width: 100px;
+    padding-top: 10px;
+    text-align: center;
+    margin-top: 5px;
+    background-color: rgb(204, 203, 203);
+  }
+
+
+  @media screen and (max-width: 1279px) {
+    main figure{
+        display: none;
+    }
+    main section{
+        width: 70%;
+    }
+
+    main nav{
+        width: 30%;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    main ul li {
+        width:auto;
+        padding-top: 10px;
+        text-align: center;
+        margin-right: 30px;
+
+      }
+    
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    main section{
+        width: 100%;
+    }
+
+    main nav{
+        width: 100%;
+    }
+  }
