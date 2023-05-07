@@ -1,0 +1,27 @@
+section{
+    display: flex;
+    height: 630px;
+    border: 1px solid;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+}
+
+
+section div{
+    margin-inline: 20px;
+    border: 1px solid;
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}
+
+section div p{
+    margin: 0;
+    border: 1px solid;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
