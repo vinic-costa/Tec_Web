@@ -1,0 +1,11 @@
+footer {
+    padding: 40px 0;
+    color: #F8D66A;
+    background-color: #450F03;
+    border: 1px solid #F8D66A;;
+}
+
+footer p,
+footer address {
+    text-align: center;
+}

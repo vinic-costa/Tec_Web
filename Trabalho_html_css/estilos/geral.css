@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Good Morning';
+    src: url("/fonts/good_morning_2/Good Morning.ttf");
+}
+
+@font-face {
+    font-family: 'I hate Comic Sans';
+    src: url("/fonts/i_hate_comic_sans/IHATCS__.TTF");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    padding: 40px 80px;
+    background-color: #08050E;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1200px) {
+    body {
+        padding: 40px 20px;
+    }
+}
