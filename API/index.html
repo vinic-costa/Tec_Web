@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trabalhando com API</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+  </head>
+
+  <body class="conteudo" onload="getUsers()">
+    <h1>Laboratório 07</h1>
+
+    <h2>Tabela - GET</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>E-mail</th>
+          <th>Primeiro Nome</th>
+          <th>Último Nome</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Formulário - POST</h2>
+
+    <form id="form-post" onsubmit="postUser(event)">
+      <label for="primeiroNome">Primeiro Nome:</label>
+      <input type="text" name="primeiroNome" id="primeiroNome" />
+
+      <label for="ultimoNome">Último Nome</label>
+      <input type="text" name="ultimoNome" id="ultimoNome" />
+
+      <label for="job">Profissão</label>
+      <input type="text" name="job" id="job" />
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Formulário - PUT</h2>
+
+    <form id="form-put" onsubmit="putUser(event)">
+      <label for="id_user">Id:</label>
+      <input type="text" name="id_user" id="id_user" />
+
+      <label for="primeiroNome_put">Primeiro Nome:</label>
+      <input type="text" name="primeiroNome_put" id="primeiroNome_put" />
+
+      <label for="ultimoNome_put">Último Nome</label>
+      <input type="text" name="ultimoNome_put" id="ultimoNome_put" />
+
+      <label for="job_put">Profissão</label>
+      <input type="text" name="job_put" id="job_put" />
+
+      <button type="submit">Atualizar</button>
+    </form>
+
+    <h2>Formulário - DELETE</h2>
+
+    <form id="form-delete" onsubmit="deleteUser(event)">
+      <label for="id_user_delete">Id:</label>
+      <input type="text" name="id_user_delete" id="id_user_delete" />
+
+      <button type="submit">Deletar</button>
+    </form>
+
+    <script>
+      const criarLinhaTabela = (user) => {
+        const tbody = document.querySelector("tbody");
+
+        const tr = document.createElement("tr");
+
+        const tdId = document.createElement("td");
+        tdId.innerHTML = user.id;
+
+        const tdEmail = document.createElement("td");
+        tdEmail.innerHTML = user.email;
+
+        const tdFirstName = document.createElement("td");
+        tdFirstName.innerHTML = user.primeiroNome;
+
+        const tdLastName = document.createElement("td");
+        tdLastName.innerHTML = user.ultimoNome;
+
+        tr.appendChild(tdId);
+        tr.appendChild(tdEmail);
+        tr.appendChild(tdFirstName);
+        tr.appendChild(tdLastName);
+
+        tbody.appendChild(tr);
+      };
+
+      const getUsers = async () => {
+        await fetch("https://reqres.in/api/users")
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data.data);
+
+            data.data.forEach((user) => {
+              criarLinhaTabela(user);
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+      const postUser = (event) => {
+        event.preventDefault();
+
+        const firstName = document.getElementById("primeiroNome").value;
+        const lastName = document.getElementById("ultimoNome").value;
+        const job = document.getElementById("job").value;
+
+        //Objeto requerido pela API fornecida
+        const data = {
+          name: firstName + " " + lastName,
+          job: job,
+        };
+
+        // Define as configurações da requisição
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+
+        // Requisição usando Fetch API
+        fetch("https://reqres.in/api/users", options)
+          .then((response) => response.json())
+          .then((data) => {
+            alert(
+              `Usuário ${data.name.toLocaleUpperCase()} criado com sucesso!`
+            );
+          })
+          .catch((error) => {
+            console.error("Erro na requisição:", error);
+            alert(`Erro ao cadastrar o usuário!`);
+          });
+      };
+
+      const putUser = (event) => {
+        event.preventDefault();
+
+        const idUser = document.getElementById("id_user").value;
+        const firstName = document.getElementById("primeiroNome_put").value;
+        const lastName = document.getElementById("ultimoNome_put").value;
+        const job = document.getElementById("job_put").value;
+
+        //Objeto requerido pela API fornecida
+        const data = {
+          name: firstName + " " + lastName,
+          job: job,
+        };
+
+        // Define as configurações da requisição
+        const options = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+
+        // Requisição usando Fetch API
+        fetch(`https://reqres.in/api/users/${idUser}`, options)
+          .then((response) => response.json())
+          .then((data) => {
+            alert(
+              `Usuário ${data.name.toLocaleUpperCase()} atualizado com sucesso!`
+            );
+          })
+          .catch((error) => {
+            console.error("Erro na requisição:", error);
+            alert(`Erro ao atualizar o usuário!`);
+          });
+      };
+
+      const deleteUser = (event) => {
+        event.preventDefault();
+
+        const idUser = document.getElementById("id_user_delete").value;
+
+        const options = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
+        // Requisição usando Fetch API
+        fetch(`https://reqres.in/api/users/${idUser}`, options)
+          .then((response) => {
+            if (response.ok) {
+              alert("Usuário deletado com sucesso!");
+            } else {
+              console.error("Falha ao deletar usuário:", response.status);
+            }
+          })
+          .catch((error) => {
+            console.error("Erro na requisição:", error);
+            alert(`Erro ao deletar o usuário!`);
+          });
+      };
+    </script>
+  </body>
+</html>
